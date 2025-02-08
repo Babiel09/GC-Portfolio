@@ -1,0 +1,20 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo -->
+  <rect width="400" height="200" fill="white"/>
+  
+  <!-- Círculo decorativo -->
+  <circle cx="200" cy="100" r="80" fill="none" stroke="#8A2BE2" stroke-width="2"/>
+  
+  <!-- Texto Gabriel -->
+  <text x="200" y="85" font-family="Arial" font-size="32" font-weight="bold" text-anchor="middle" fill="black">
+    GABRIEL
+  </text>
+  
+  <!-- Texto Castro -->
+  <text x="200" y="125" font-family="Arial" font-size="32" font-weight="bold" text-anchor="middle" fill="#8A2BE2">
+    CASTRO
+  </text>
+  
+  <!-- Elementos decorativos -->
+  <line x1="120" y1="100" x2="280" y2="100" stroke="black" stroke-width="1"/>
+</svg>
