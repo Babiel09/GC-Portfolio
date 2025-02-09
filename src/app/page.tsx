@@ -19,21 +19,24 @@ export default function Home() {
       image: MovieHereImage,
       description: "Movie Here is a open source web application thats have a giant movie list and your credentials are safe with us, we use technologies like JWT, OAuth2, Bcrypt and others.",
       tags: ["Typescript","Next.js", "React", "Tailwind","Nest.js", "Prisma", "PostgreSQL", "OAuth2", "JWT", "Bcrypt","Docker","BullMQ","Redis"],
-      link: "https://github.com/yourusername/movie-here"
+      link: "https://github.com/Babiel09/Movie-Here-Front-End",
+      link2: "https://github.com/Babiel09/Movie-Here-Back-End",
     },
     {
       title: "Spreadsheets",
       image: PLanilhaImage,
       description: "Spreadsheets is a project to improve organization with style",
       tags: ["TypeScript", "React", "Tailwind", "Node.js", "Fastify", "MongoDB"],
-      link: "#"
+      link: "https://github.com/Babiel09/Planilhas_Front-End",
+      link2: "https://github.com/Babiel09/Planilhas_Back-End",
     },
     {
       title: "Bank API",
       image: APIImage, 
       description: "This is an API to simulate some bank actions, like transfer money, Deposit and withdeaw.",
       tags: ["Typescript", "Nest.js", ,"Prisma", "BullMQ", "Redis", "PostgreSQL", "Bcrypt"],
-      link: "#"
+      link: "https://github.com/Babiel09/Bank-API",
+      link2: "",
     },
   ];
 
@@ -126,44 +129,78 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-3xl font-bold text-white mb-12">Selected Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} 
-                   className="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-purple-500 transition-all duration-300">
-                {/* Image Container */}
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <a href={project.link}
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       className="text-white flex items-center gap-2 bg-purple-500 px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      View Project <ExternalLink size={16} />
+          {projects.map((project,index) => (
+            <div 
+              key={index} 
+              className="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-purple-500 transition-all duration-300">
+              
+              {/* Image Container */}
+              <div className="relative w-full h-48 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+
+                {/* Overlay (camada de fundo) */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                {/* Front End */}
+                {project.link2 === "" ?(
+                  <div className="mt-10 absolute top-0 left-0 right-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white flex items-center gap-2 bg-purple-500 px-4 py-2 rounded-full transition-transform duration-300">
+                    View Project <ExternalLink size={16} />
+                  </a>
+                </div>
+                ):(
+                  <div className="mt-10 absolute top-0 left-0 right-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white flex items-center gap-2 bg-purple-500 px-4 py-2 rounded-full transition-transform duration-300">
+                    View Project Front End <ExternalLink size={16} />
+                  </a>
+                </div>
+
+                )}
+                
+                {/* Back End */}
+                {!!project.link2 && (
+                  <div className="mb-10 absolute bottom-0 left-0 right-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
+                    <a 
+                      href={project.link2} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-white flex items-center gap-2 bg-purple-500 px-4 py-2 rounded-full transition-transform duration-300">
+                      View Project Back End <ExternalLink size={16} />
                     </a>
                   </div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-white mb-4">{project.title}</h4>
-                  <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} 
-                            className="bg-black/50 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                )}
+              </div>
+              
+              {/* Content */}
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-white mb-4">{project.title}</h4>
+                <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span 
+                      key={tagIndex} 
+                      className="bg-black/50 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
           </div>
         </div>
       </section>
